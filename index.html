@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pet Shop — Inicio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <button class="menu-toggle" aria-label="Abrir menú" aria-controls="main-nav" aria-expanded="false">☰</button>
+      <a class="logo" href="index.html">🐾  Pet Shop  🐾</a>
+      
+    </div>
+    <nav id="main-nav" class="nav">
+      <a href="index.html" class="active">Inicio</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="contacto.html">Contacto</a>
+      <a class="cart" href="catalogo.html#carrito" aria-label="Ver carrito">🛒 <span id="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero__content">
+        <h1>Todo lo que tu mascota necesita en un solo lugar!
+
+        </h1>
+        <p>Alimentos, accesorios y juguetes para perros, gatos y más. Calidad, buenos precios y cariño 🐶🐱</p>
+        <div class="hero__actions">
+          <a class="btn" href="catalogo.html">Ir al Catálogo</a>
+          <a class="btn btn--outline" href="contacto.html">Contáctanos</a>
+        </div>
+      </div>
+      <figure class="hero__img">
+        <img src="https://medikamentos.pet/wp-content/uploads/2024/11/Portada-para-Facebook-Promocion-para-pet-shop-Simple-Morada-y-Amarillo.jpg" alt="Perro feliz con accesorios" />
+      </figure>
+    </section>
+
+    <section class="features container">
+      <h2>¿Por qué elegirnos?</h2>
+      <ul class="feature-list">
+        <li>* Productos seleccionados y certificados</li>
+        <li>* Envíos rápidos a todo Chile</li>
+        <li>* Pagos seguros</li>
+        <li>* Atención personalizada</li>
+      </ul>
+    </section>
+
+    <section class="categories container">
+      <h2>Categorías principales</h2>
+      <div class="grid3">
+        <article class="card">
+          <img src="https://www.shutterstock.com/image-photo/happy-puppy-welsh-corgi-14-260nw-2270841247.jpg" alt="Productos para perros" />
+          <h3>Perros</h3>
+          <p>Alimento, correas, camas y más.</p>
+          <a class="btn" href="catalogo.html#perros">Ver productos</a>
+        </article>
+        <article class="card">
+          <img src="https://media.istockphoto.com/id/459970595/photo/funny-cat-says-hello.jpg?s=612x612&w=0&k=20&c=I7vn1urOrmorB6HFBaRfQQw5wG5yBky4mOeEewPtEYs=" alt="Productos para gatos" />
+          <h3>Gatos</h3>
+          <p>Arena, juguetes y rascadores.</p>
+          <a class="btn" href="catalogo.html#gatos">Ver productos</a>
+        </article>
+        <article class="card">
+          <img src="https://media.istockphoto.com/id/959866606/photo/rabbit-4-months-old-sitting-against-white-background.jpg?s=612x612&w=0&k=20&c=8yRFVDIgoXj3gCh7ckkF4gCh8JjWN967r244PQ4vFUU=" alt="Accesorios varios" />
+          <h3>Conejos</h3>
+          <p>Accesorios para conejos, correas y más.</p>
+          <a class="btn" href="catalogo.html#otros">Ver productos</a>
+        </article>
+        <article class="card">
+          <img src="https://www.superzoo.cl/on/demandware.static/-/Library-Sites-SuperZooSharedLibrary/default/dw27bdeb43/SuperZoo/homepage/2025/home/Ofertas/so3.jpg" alt="Accesorios varios" />
+          <h3>Accesorios varios | Promociones </h3>
+          <p>Accesorios de viaje, jaulas y transportadores (marcas seleccionadas).</p>
+          <a class="btn" href="catalogo.html#otros">Ver productos</a>
+        </article>
+      </div>
+    </section>
+    <section class="newsletter">
+  <div class="newsletter-container">
+
+    <div class="newsletter-img">
+      <img src="https://www.superzoo.cl/on/demandware.static/-/Library-Sites-SuperZooSharedLibrary/default/dw7e5c11ad/ml-newsletter.webp" alt="Gato adorable" />
+    </div>
+
+
+    <div class="newsletter-content">
+      <h2>¿Quieres recibir ofertas en tu email?</h2>
+      <p>
+        Únete a nuestra newsletter y recibirás toda la información sobre nuestros productos,
+        promociones y campañas. ¡Sé el primero en enterarte de todo!
+      </p>
+
+      <form id="form-newsletter" class="newsletter-form" novalidate>
+        <input type="email" id="news-email" name="email" placeholder="Ingresa tu email" required />
+        <div class="checkbox">
+          <input type="checkbox" id="news-acepto" required />
+          <label for="news-acepto">
+            He leído y acepto la <a href="#">Política de privacidad</a> y deseo recibir ofertas personalizadas.
+          </label>
+        </div>
+        <button type="submit" class="btn">Suscribirme</button>
+        <small id="news-error" class="error"></small>
+        <p id="news-success" class="success hidden">✅ ¡Gracias por suscribirte! Pronto recibirás novedades.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <h4>Pet Shop</h4>
+        <p>Tu tienda de confianza para mascotas.</p>
+      </div>
+      <nav aria-label="Enlaces">
+        <a href="index.html">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+    <p class="footer__copy">© 2025 Pet Shop — Todos los derechos reservados</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

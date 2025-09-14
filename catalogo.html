@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pet Shop — Catálogo</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <button class="menu-toggle" aria-label="Abrir menú" aria-controls="main-nav" aria-expanded="false">☰</button>
+      <a class="logo" href="index.html">🐾 Pet Shop</a>
+    </div>
+    <nav id="main-nav" class="nav">
+      <a href="index.html">Inicio</a>
+      <a href="catalogo.html" class="active">Catálogo</a>
+      <a href="contacto.html">Contacto</a>
+      <a class="cart" href="#carrito" aria-label="Ver carrito">🛒 <span id="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <main class="container layout">
+    <aside class="sidebar" aria-label="Categorías">
+      <h2>Categorías</h2>
+      <ul>
+        <li><a href="#perros">Perros</a></li>
+        <li><a href="#gatos">Gatos</a></li>
+        <li><a href="#Accesorios_varios">accesorios</a></li>
+      </ul>
+
+      <form class="filter" id="form-filtro" novalidate>
+        <h3>Filtro rápido</h3>
+        <label for="q">Buscar</label>
+        <input id="q" name="q" type="search" placeholder="Ej: correa, arena…" />
+        <button type="submit" class="btn btn--small">Filtrar</button>
+        <p id="hint-q" class="hint">Tip: escribe 3+ letras para mejores resultados.</p>
+      </form>
+    </aside>
+
+    <section class="content">
+      <header class="page-title">
+        <h1>Catálogo</h1>
+        <p>Encuentra lo mejor para tus mascotas 🐶🐱</p>
+      </header>
+
+      <h2 id="perros">Perros</h2>
+      <div class="grid3 product-grid" data-category="perros">
+        <article class="product" data-name="Fit Formula Adulto alimento para perr">
+          <img src="https://www.superzoo.cl/on/demandware.static/-/Sites-SuperZoo-master-catalog/default/dw0474b5be/images/563_m.jpg" alt="Alimento premium para perro"/>
+          <h3>Fit Formula Adulto alimento para perro</h3>
+          <p class="price">$45.000</p>
+          <button class="btn add-cart" data-product="Fit Formula Adulto alimento para perr">Agregar al carrito</button>
+        </article>
+        <article class="product" data-name="Ruffwear front range collar - river rock verde">
+          <img src="https://www.superzoo.cl/on/demandware.static/-/Sites-SuperZoo-master-catalog/default/dwe7a1aeea/images/8855_m1.jpg" alt="Juguete mordedor"/>
+          <h3>Ruffwear front range collar - river rock verde</h3>
+          <p class="price">$18.990</p>
+          <button class="btn add-cart" data-product="Ruffwear front range collar - river rock verde">Agregar al carrito</button>
+        </article>
+        <article class="product" data-name="Desparasitante Nexgard Spectra 1comp para perros">
+          <img src="https://www.superzoo.cl/on/demandware.static/-/Sites-SuperZoo-master-catalog/default/dw70112822/images/NexGard%20Spectra%2015.1-30%20kg%201compr.jpg" alt="Correa ajustable"/>
+          <h3>Desparasitante Nexgard Spectra 1comp para perros</h3>
+          <p class="price">$16.990</p>
+          <button class="btn add-cart" data-product="Desparasitante Nexgard Spectra 1comp para perros">Agregar al carrito</button>
+        </article>
+        <article class="product" data-name="Ball Extreme Kong">
+          <img src="https://www.superzoo.cl/on/demandware.static/-/Sites-SuperZoo-master-catalog/default/dw24677c93/images/0b92d-ub1-3-1-.jpg" alt="Correa ajustable"/>
+          <h3>Ball Extreme Kong</h3>
+          <p class="price">$13.990</p>
+          <button class="btn add-cart" data-product="Ball Extreme Kong">Agregar al carrito</button>
+        </article>
+      </div>
+
+      <h2 id="gatos">Gatos</h2>
+      <div class="grid3 product-grid" data-category="gatos">
+        <article class="product" data-name="Leonardo quality selection ave lata">
+          <img src="https://www.superzoo.cl/on/demandware.static/-/Sites-SuperZoo-master-catalog/default/dw7009e5c1/images/5524_m.jpg" alt="Arena sanitaria para gato"/>
+          <h3>Leonardo quality selection ave lata</h3>
+          <p class="price">$8.990</p>
+          <button class="btn add-cart" data-product="Leonardo quality selection ave lata">Agregar al carrito</button>
+        </article>
+        <article class="product" data-name="Zeecat gotham cat collar talla única">
+          <img src="https://www.superzoo.cl/on/demandware.static/-/Sites-SuperZoo-master-catalog/default/dwc0617821/images/37e48-gothamcatcollar.jpg" alt="Rascador gato"/>
+          <h3>Zeecat gotham cat collar talla única</h3>
+          <p class="price">$5.990</p>
+          <button class="btn add-cart" data-product="Zeecat gotham cat collar talla única">Agregar al carrito</button>
+        </article>
+        <article class="product" data-name="Plaqueoff snack gato 60 GR">
+          <img src="https://www.superzoo.cl/on/demandware.static/-/Sites-SuperZoo-master-catalog/default/dw2eac8e23/images/bc873-plaqueoff-dental-croq-chats.jpg" alt="Cama suave para gato"/>
+          <h3>Plaqueoff snack gato 60 GR</h3>
+          <p class="price">$9.990</p>
+          <button class="btn add-cart" data-product="Plaqueoff snack gato 60 GR">Agregar al carrito</button>
+        </article>
+        <article class="product" data-name="Bola natural unidad">
+          <img src="https://www.superzoo.cl/on/demandware.static/-/Sites-SuperZoo-master-catalog/default/dw66fac940/images/5a748-8436569703939.1-2-.jpg" alt="Cama suave para gato"/>
+          <h3>Bola natural unidad</h3>
+          <p class="price">$2.990</p>
+          <button class="btn add-cart" data-product="Bola natural unidad">Agregar al carrito</button>
+        </article>
+      </div>
+
+      <h2 id="Accesorios_varios">Accesorios varios | Promociones</h2>
+      <div class="grid3 product-grid" data-category="Accesorios varios | Promociones">
+        <article class="product" data-name="Transportador voyager dos puertas">
+          <img src="https://www.superzoo.cl/on/demandware.static/-/Sites-SuperZoo-master-catalog/default/dw17bf213f/images/Transportador%20voyager%20dos%20puertas%202.jpg" alt="Pecera 20 litros"/>
+          <h3>Transportador voyager dos puertas</h3>
+          <p class="price">$84.990</p>
+          <button class="btn add-cart" data-product="Transportador voyager dos puertas">Agregar al carrito</button>
+        </article>
+        <article class="product" data-name="Rascador monica">
+          <img src="https://www.superzoo.cl/on/demandware.static/-/Sites-SuperZoo-master-catalog/default/dw19d231bc/images/Rascador%20monica%202.jpg" alt="Comedero para aves"/>
+          <h3>Rascador monica</h3>
+          <p class="price">$155.990</p>
+          <button class="btn add-cart" data-product="Rascador monica">Agregar al carrito</button>
+        </article>
+        <article class="product" data-name="Living World Bebedero Hermetico">
+          <img src="https://www.superzoo.cl/on/demandware.static/-/Sites-SuperZoo-master-catalog/default/dw85541b9a/images/31faa-61530.jpg" alt="Cámara para mascotas"/>
+          <h3>Living World Bebedero Hermetico</h3>
+          <p class="price">$9.990</p>
+          <button class="btn add-cart" data-product="Living World Bebedero Hermetico">Agregar al carrito</button>
+        </article>
+      </div>
+
+      <section id="carrito" class="cart-box" aria-live="polite">
+        <h2>Carrito</h2>
+        <ul id="cart-list" class="cart-list"></ul>
+        <p id="cart-empty" class="muted">Tu carrito está vacío.</p>
+        <button id="cart-clear" class="btn btn--outline" type="button">Vaciar carrito</button>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <h4>Pet Shop</h4>
+        <p>Encuentra lo que tu mascota necesita.</p>
+      </div>
+      <nav aria-label="Enlaces">
+        <a href="index.html">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+    <p class="footer__copy">© 2025 Pet Shop</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

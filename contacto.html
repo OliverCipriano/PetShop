@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pet Shop — Contacto</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <button class="menu-toggle" aria-label="Abrir menú" aria-controls="main-nav" aria-expanded="false">☰</button>
+      <a class="logo" href="index.html">🐾 Pet Shop</a>
+    </div>
+    <nav id="main-nav" class="nav">
+      <a href="index.html">Inicio</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="contacto.html" class="active">Contacto</a>
+      <a class="cart" href="catalogo.html#carrito" aria-label="Ver carrito">🛒 <span id="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <header class="page-title">
+      <h1>Contáctanos</h1>
+      <p>¿Tienes dudas o necesitas una recomendación? Escríbenos.</p>
+    </header>
+
+    <form id="contact-form" class="form" novalidate>
+      <div class="form__row">
+        <label for="nombre">Nombre</label>
+        <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required minlength="3" />
+        <small class="error" id="err-nombre"></small>
+      </div>
+
+      <div class="form__row">
+        <label for="email">Correo</label>
+        <input id="email" name="email" type="email" placeholder="tucorreo@dominio.com" required />
+        <small class="error" id="err-email"></small>
+      </div>
+
+      <div class="form__row">
+        <label for="tipo">Tipo de mascota</label>
+        <select id="tipo" name="tipo" required>
+          <option value="">Selecciona una opción</option>
+          <option>Perro</option>
+          <option>Gato</option>
+          <option>Otro</option>
+        </select>
+        <small class="error" id="err-tipo"></small>
+      </div>
+
+      <div class="form__row">
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos en qué te ayudamos" required minlength="10"></textarea>
+        <small class="error" id="err-mensaje"></small>
+      </div>
+
+      <div class="form__row form__row--inline">
+        <label class="checkbox">
+          <input id="acepto" name="acepto" type="checkbox" required />
+          Acepto la política de privacidad
+        </label>
+        <small class="error" id="err-acepto"></small>
+      </div>
+
+      <button class="btn" type="submit">Enviar</button>
+      <p id="form-success" class="success hidden" role="status">¡Gracias! Te responderemos pronto.</p>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <h4>Pet Shop</h4>
+        <p>Estamos para ayudarte.</p>
+      </div>
+      <nav aria-label="Enlaces">
+        <a href="index.html">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+    <p class="footer__copy">© 2025 Pet Shop</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
