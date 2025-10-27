@@ -1,4 +1,3 @@
-// ====== Navegación (menú responsive) ======
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.getElementById('main-nav');
 if (toggle && nav) {
@@ -8,7 +7,7 @@ if (toggle && nav) {
   });
 }
 
-// ====== Carrito (contador simple + lista en catálogo) ======
+
 const cartCountEl = document.getElementById('cart-count');
 const cartList = document.getElementById('cart-list');
 const cartEmpty = document.getElementById('cart-empty');
@@ -17,10 +16,10 @@ const btnClear = document.getElementById('cart-clear');
 let cart = JSON.parse(localStorage.getItem('petshop_cart') || '[]');
 
 function updateCartUI() {
-  // contador
+
   if (cartCountEl) cartCountEl.textContent = cart.length;
 
-  // listado
+
   if (cartList && cartEmpty) {
     cartList.innerHTML = '';
     if (cart.length === 0) {
@@ -56,7 +55,7 @@ document.querySelectorAll('.add-cart').forEach(btn => {
     cart.push(name);
     persistCart();
     updateCartUI();
-    // Sugerencia al usuario
+
     alert(`✅ Agregado al carrito: ${name}`);
   });
 });
@@ -69,7 +68,6 @@ if (btnClear) {
   });
 }
 
-// ====== Filtro rápido en catálogo ======
 const formFiltro = document.getElementById('form-filtro');
 if (formFiltro) {
   formFiltro.addEventListener('submit', (e) => {
@@ -83,7 +81,6 @@ if (formFiltro) {
   });
 }
 
-// ====== Ofertas mail
 
 const newsForm = document.getElementById('form-newsletter');
 if (newsForm) {

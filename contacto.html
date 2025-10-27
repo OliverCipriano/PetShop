@@ -4,9 +4,21 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pet Shop — Contacto</title>
+
   <link rel="stylesheet" href="style.css"/>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <style>
+
+    :root { --brand:#ff9800; }
+    .page-title h1 { margin-bottom: .25rem; }
+    .btn-warning { font-weight: 800; }
+    .contact-card { border-radius: 12px; }
+    .form-hint { font-size: .9rem; color:#666; }
+  </style>
 </head>
 <body>
+
   <header class="topbar">
     <div class="brand">
       <button class="menu-toggle" aria-label="Abrir menú" aria-controls="main-nav" aria-expanded="false">☰</button>
@@ -20,60 +32,20 @@
     </nav>
   </header>
 
-  <main class="container">
-    <header class="page-title">
+  <main class="container" style="max-width: 980px;">
+    <header class="page-title" style="margin: 24px 0 8px;">
       <h1>Contáctanos</h1>
-      <p>¿Tienes dudas o necesitas una recomendación? Escríbenos.</p>
+      <p class="text-muted">¿Tienes dudas o necesitas una recomendación? Escríbenos y te respondemos.</p>
     </header>
 
-    <form id="contact-form" class="form" novalidate>
-      <div class="form__row">
-        <label for="nombre">Nombre</label>
-        <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required minlength="3" />
-        <small class="error" id="err-nombre"></small>
-      </div>
-
-      <div class="form__row">
-        <label for="email">Correo</label>
-        <input id="email" name="email" type="email" placeholder="tucorreo@dominio.com" required />
-        <small class="error" id="err-email"></small>
-      </div>
-
-      <div class="form__row">
-        <label for="tipo">Tipo de mascota</label>
-        <select id="tipo" name="tipo" required>
-          <option value="">Selecciona una opción</option>
-          <option>Perro</option>
-          <option>Gato</option>
-          <option>Otro</option>
-        </select>
-        <small class="error" id="err-tipo"></small>
-      </div>
-
-      <div class="form__row">
-        <label for="mensaje">Mensaje</label>
-        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos en qué te ayudamos" required minlength="10"></textarea>
-        <small class="error" id="err-mensaje"></small>
-      </div>
-
-      <div class="form__row form__row--inline">
-        <label class="checkbox">
-          <input id="acepto" name="acepto" type="checkbox" required />
-          Acepto la política de privacidad
-        </label>
-        <small class="error" id="err-acepto"></small>
-      </div>
-
-      <button class="btn" type="submit">Enviar</button>
-      <p id="form-success" class="success hidden" role="status">¡Gracias! Te responderemos pronto.</p>
-    </form>
+    <div id="contact-root"></div>
   </main>
 
   <footer class="footer">
     <div class="container footer__grid">
       <div>
         <h4>Pet Shop</h4>
-        <p>Estamos para ayudarte.</p>
+        <p>Tu tienda de confianza para mascotas.</p>
       </div>
       <nav aria-label="Enlaces">
         <a href="index.html">Inicio</a>
@@ -81,9 +53,174 @@
         <a href="contacto.html">Contacto</a>
       </nav>
     </div>
-    <p class="footer__copy">© 2025 Pet Shop</p>
+    <p class="footer__copy">© 2025 Pet Shop — Todos los derechos reservados</p>
   </footer>
 
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
   <script src="script.js"></script>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function ContactForm(){
+      const [nombre, setNombre]   = useState('');
+      const [email, setEmail]     = useState('');
+      const [tipo, setTipo]       = useState('');
+      const [mensaje, setMensaje] = useState('');
+      const [acepto, setAcepto]   = useState(false);
+      const [newsletter, setNewsletter] = useState(true);
+
+      const [errors, setErrors] = useState({});
+      const [ok, setOk]         = useState(false);
+
+      const validate = () => {
+        const e = {};
+        if (nombre.trim().length < 3) e.nombre = 'Mínimo 3 caracteres.';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = 'Correo inválido.';
+        if (!tipo) e.tipo = 'Selecciona una opción.';
+        if (mensaje.trim().length < 10) e.mensaje = 'Mínimo 10 caracteres.';
+        if (!acepto) e.acepto = 'Debes aceptar la política de privacidad.';
+        setErrors(e);
+        return Object.keys(e).length === 0;
+      };
+
+      const handleSubmit = (ev) => {
+        ev.preventDefault();
+        setOk(false);
+        if (!validate()) return;
+
+        const payload = {
+          nombre, email, tipo, mensaje,
+          newsletter, fecha: new Date().toISOString()
+        };
+        const raw = localStorage.getItem('petshop_contactos');
+        const arr = raw ? JSON.parse(raw) : [];
+        arr.push(payload);
+        localStorage.setItem('petshop_contactos', JSON.stringify(arr));
+
+        setOk(true);
+        setNombre(''); setEmail(''); setTipo(''); setMensaje('');
+        setAcepto(false); setNewsletter(true);
+        setErrors({});
+      };
+
+      return (
+        <div className="card shadow-sm contact-card my-3">
+          <div className="card-body">
+            <h2 className="h4 mb-3">Formulario de contacto</h2>
+            <form onSubmit={handleSubmit} noValidate>
+              <div className="row g-3">
+                <div className="col-md-6">
+                  <label htmlFor="nombre" className="form-label">Nombre</label>
+                  <input
+                    id="nombre" name="nombre" className={`form-control ${errors.nombre?'is-invalid':''}`}
+                    value={nombre} onChange={(e)=>setNombre(e.target.value)}
+                    placeholder="Tu nombre" required minLength={3}
+                    autoComplete="name"
+                  />
+                  {errors.nombre && <div className="invalid-feedback">{errors.nombre}</div>}
+                </div>
+
+                <div className="col-md-6">
+                  <label htmlFor="email" className="form-label">Correo</label>
+                  <input
+                    id="email" name="email" type="email"
+                    className={`form-control ${errors.email?'is-invalid':''}`}
+                    value={email} onChange={(e)=>setEmail(e.target.value)}
+                    placeholder="tucorreo@dominio.com" required
+                    autoComplete="email"
+                  />
+                  {errors.email && <div className="invalid-feedback">{errors.email}</div>}
+                </div>
+
+                <div className="col-md-6">
+                  <label htmlFor="tipo" className="form-label">Tipo de mascota</label>
+                  <select
+                    id="tipo" name="tipo"
+                    className={`form-select ${errors.tipo?'is-invalid':''}`}
+                    value={tipo} onChange={(e)=>setTipo(e.target.value)} required
+                  >
+                    <option value="">Selecciona una opción</option>
+                    <option>Perro</option>
+                    <option>Gato</option>
+                    <option>Otro</option>
+                  </select>
+                  {errors.tipo && <div className="invalid-feedback">{errors.tipo}</div>}
+                </div>
+
+                <div className="col-12">
+                  <label htmlFor="mensaje" className="form-label">Mensaje</label>
+                  <textarea
+                    id="mensaje" name="mensaje" rows="4"
+                    className={`form-control ${errors.mensaje?'is-invalid':''}`}
+                    value={mensaje} onChange={(e)=>setMensaje(e.target.value)}
+                    placeholder="Cuéntanos en qué te ayudamos" required minLength={10}
+                  />
+                  <div className="form-hint">Sé específico para poder ayudarte mejor.</div>
+                  {errors.mensaje && <div className="invalid-feedback">{errors.mensaje}</div>}
+                </div>
+
+                <div className="col-12">
+                  <div className="form-check">
+                    <input
+                      id="acepto" name="acepto" type="checkbox" className={`form-check-input ${errors.acepto?'is-invalid':''}`}
+                      checked={acepto} onChange={(e)=>setAcepto(e.target.checked)} required
+                    />
+                    <label htmlFor="acepto" className="form-check-label">
+                      He leído y acepto la <a href="#">Política de privacidad</a>.
+                    </label>
+                    {errors.acepto && <div className="invalid-feedback d-block">{errors.acepto}</div>}
+                  </div>
+                </div>
+
+                <div className="col-12">
+                  <div className="form-check">
+                    <input
+                      id="newsletter" name="newsletter" type="checkbox" className="form-check-input"
+                      checked={newsletter} onChange={(e)=>setNewsletter(e.target.checked)}
+                    />
+                    <label htmlFor="newsletter" className="form-check-label">
+                      Quiero recibir ofertas y novedades por email.
+                    </label>
+                  </div>
+                </div>
+
+                <div className="col-12">
+                  <button type="submit" className="btn btn-warning">Enviar</button>
+                  {ok && <p className="text-success mt-3 mb-0">¡Gracias! Tu mensaje fue registrado.</p>}
+                </div>
+              </div>
+            </form>
+
+            <hr className="my-4"/>
+
+            <details>
+              <summary className="text-muted">Ver últimos envíos guardados (demo)</summary>
+              <div id="contact-debug" className="mt-2 small text-muted"></div>
+            </details>
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('contact-root'));
+    root.render(<ContactForm />);
+
+    function renderDebug() {
+      const raw = localStorage.getItem('petshop_contactos');
+      const arr = raw ? JSON.parse(raw) : [];
+      const el = document.getElementById('contact-debug');
+      if (!el) return;
+      if (arr.length === 0) el.textContent = 'No hay envíos registrados aún.';
+      else el.textContent = arr.map(x => `${x.fecha.slice(0,16).replace('T',' ')} — ${x.nombre} <${x.email}> (${x.tipo})`).join(' | ');
+    }
+    renderDebug();
+    window.addEventListener('storage', renderDebug);
+  </script>
 </body>
 </html>
